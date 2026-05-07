@@ -1,0 +1,72 @@
+package br.com.escola.koyebteste;
+
+import java.time.LocalDateTime;
+import java.util.LinkedHashMap;
+import java.util.Map;
+
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController
+public class InicioController {
+
+    @GetMapping("/")
+    public String inicio() {
+        return """
+                <html>
+                    <head>
+                        <meta charset='UTF-8'>
+                        <title>Spring Boot no Koyeb</title>
+                        <style>
+                            body {
+                                font-family: Arial, sans-serif;
+                                background: #f5f7fb;
+                                margin: 40px;
+                                color: #222;
+                            }
+                            .card {
+                                background: white;
+                                padding: 30px;
+                                border-radius: 16px;
+                                box-shadow: 0 4px 18px rgba(0,0,0,0.12);
+                                max-width: 700px;
+                            }
+                            h1 {
+                                color: #2d4cc8;
+                            }
+                            code {
+                                background: #eef1ff;
+                                padding: 4px 8px;
+                                border-radius: 6px;
+                            }
+                        </style>
+                    </head>
+                    <body>
+                        <div class='card'>
+                            <h1>Aplicação Spring Boot publicada com sucesso!</h1>
+                            <p>Se você está vendo esta página, o projeto Java está rodando.</p>
+                            <p>Teste também as rotas:</p>
+                            <p><code>/teste</code></p>
+                            <p><code>/api/status</code></p>
+                            <p><code>/actuator/health</code></p>
+                        </div>
+                    </body>
+                </html>
+                """;
+    }
+
+    @GetMapping("/teste")
+    public String teste() {
+        return "Koyeb funcionando! Aplicação Spring Boot no ar.";
+    }
+
+    @GetMapping("/api/status")
+    public Map<String, Object> status() {
+        Map<String, Object> resposta = new LinkedHashMap<>();
+        resposta.put("sistema", "Aplicação Spring Boot de teste");
+        resposta.put("status", "online");
+        resposta.put("mensagem", "Projeto funcionando corretamente");
+        resposta.put("dataHora", LocalDateTime.now().toString());
+        return resposta;
+    }
+}
