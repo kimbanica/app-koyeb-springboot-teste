@@ -1,0 +1,15 @@
+<!--
+Dependências para adicionar ao pom.xml quando for usar MySQL com JPA.
+Coloque dentro da tag <dependencies>.
+-->
+
+<dependency>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-data-jpa</artifactId>
+</dependency>
+
+<dependency>
+    <groupId>com.mysql</groupId>
+    <artifactId>mysql-connector-j</artifactId>
+    <scope>runtime</scope>
+</dependency>
